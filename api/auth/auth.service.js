@@ -26,13 +26,13 @@ async function login(username, password) {
     return user
 }
 
-async function signup(username, password, fullname, isAdmin, score) {
+async function signup(username, password, fullname, isAdmin, score, toys) {
     const saltRounds = 10
 
     logger.debug(`auth.service - signup with username: ${username}, fullname: ${fullname}`)
     if (!username || !password || !fullname) throw new Error('Missing details')
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.add({ username, password: hash, fullname, isAdmin, score })
+    return userService.add({ username, password: hash, fullname, isAdmin, score, toys })
 }
 
 function getLoginToken(user) {
