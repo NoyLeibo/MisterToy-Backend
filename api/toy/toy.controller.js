@@ -1,3 +1,4 @@
+import { log } from '../../middlewares/logger.middleware.js'
 import { logger } from '../../services/logger.service.js'
 import { toyService } from './toy.service.js'
 
@@ -33,7 +34,6 @@ export async function getToyById(req, res) {
 
 export async function addToy(req, res) {
     const { loggedinUser } = req
-
     try {
         const toy = req.body
         toy.owner = loggedinUser
